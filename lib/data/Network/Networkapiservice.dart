@@ -10,7 +10,7 @@ class NetwrokAApiService implements Baseapiservice {
     dynamic responsejson;
     try {
       final _response= Http.get(Uri.parse(url)).timeout(Duration(seconds: 30));
-    dynamic responsejson = RetuenResponse(_response as Http.Response);
+     responsejson = RetuenResponse(_response as Http.Response);
     }
     on SocketException {
       throw FetchException('NO Internet');
