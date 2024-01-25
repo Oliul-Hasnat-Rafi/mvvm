@@ -17,7 +17,7 @@ class BadRequestexception extends AppException {
 }
 
 class unauthexception extends AppException {
-  unauthexception([String? message]) : super(message, 'unauth Request');
+  unauthexception([String? message]) : super(message, 'unauthrice Request');
 }
 
 class InvildinputException extends AppException {
