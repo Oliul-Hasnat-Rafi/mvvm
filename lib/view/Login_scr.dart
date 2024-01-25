@@ -15,7 +15,11 @@ class _LoginscreenState extends State<Loginscreen> {
     return  Scaffold(
       body: Container(
         child: Center(
-          child:  Text('Click Here'),
+          child:  ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, RoutesName.Home);
+            },child: Text("Click Hare"),
+          ),
         ),
       ),
     );
