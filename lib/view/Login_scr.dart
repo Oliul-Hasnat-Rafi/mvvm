@@ -114,7 +114,11 @@ class _LoginscreenState extends State<Loginscreen> {
             SizedBox(
               height: height * .02,
             ),
-            InkWell(onTap: () {}, child: Text("Don't have an accont? Sign Up"))
+            InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.Signup);
+                },
+                child: Text("Don't have an accont? Sign Up"))
           ],
         ),
       ),
