@@ -15,4 +15,13 @@ class AuthviewModel with ChangeNotifier {
       Utils.flushBarErrorMessage(error.toString(), context);
     });
   }
+
+  Future<dynamic> signUp(dynamic userdata, BuildContext context) async {
+    myrepo.loginapi(userdata).then((value) {
+      Navigator.pushNamed(context, RoutesName.Home);
+      Utils.flushBarErrorMessage('Login Successfully', context);
+    }).onError((error, stackTrace) {
+      Utils.flushBarErrorMessage(error.toString(), context);
+    });
+  }
 }
