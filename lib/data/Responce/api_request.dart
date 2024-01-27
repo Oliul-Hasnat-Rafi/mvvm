@@ -7,8 +7,8 @@ class Api_request<T> {
   Api_request(this.data, this.status, this.message);
 
   Api_request.loading() : status = Status.LOADING;
-  Api_request.complect() : status = Status.COMPLECT;
-  Api_request.error() : status = Status.ERROR;
+  Api_request.complect(this.data) : status = Status.COMPLECT;
+  Api_request.error(this.message) : status = Status.ERROR;
 
   String toString() {
     return 'status : $status \n message: $message \n data: $data';
