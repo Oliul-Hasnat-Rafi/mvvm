@@ -10,6 +10,7 @@ class Api_request<T> {
   Api_request.complect(this.data) : status = Status.COMPLECT;
   Api_request.error(this.message) : status = Status.ERROR;
 
+  @override
   String toString() {
     return 'status : $status \n message: $message \n data: $data';
   }
