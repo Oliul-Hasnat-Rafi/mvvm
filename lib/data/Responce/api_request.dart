@@ -7,7 +7,7 @@ class Api_request<T> {
   Api_request(this.data, this.status, this.message);
 
   Api_request.loading() : status = Status.LOADING;
-  Api_request.complect(this.data) : status = Status.COMPLECT;
+  Api_request.complect(this.data) : status = Status.COMPLETED;
   Api_request.error(this.message) : status = Status.ERROR;
 
   @override

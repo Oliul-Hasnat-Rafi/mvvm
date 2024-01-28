@@ -1,4 +1,3 @@
-import 'package:mvvm/data/Appexception.dart';
 import 'package:mvvm/data/Network/Networkapiservice.dart';
 import 'package:mvvm/data/Network/baseapiservice.dart';
 import 'package:mvvm/model/movies_model.dart';

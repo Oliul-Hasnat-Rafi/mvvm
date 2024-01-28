@@ -26,17 +26,17 @@ class _Home_screenState extends State<Home_screen> {
 
   @override
   Widget build(BuildContext context) {
-    //final userPrefernece = Provider.of<UserViewModel>(context);
+    // final userPrefernece = Provider.of<UserViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
           InkWell(
-              // onTap: (){
-              //   userPrefernece.remove().then((value){
-              //     Navigator.pushNamed(context, RoutesName.login);
-              //   });
-              // },
+              onTap: () {
+                // userPrefernece.remove().then((value){
+                //   Navigator.pushNamed(context, RoutesName.login);
+                // });
+              },
               child: Center(child: Text('Logout'))),
           SizedBox(
             width: 20,
@@ -51,7 +51,7 @@ class _Home_screenState extends State<Home_screen> {
               return Center(child: CircularProgressIndicator());
             case Status.ERROR:
               return Center(child: Text(value.moviesList.message.toString()));
-            case Status.COMPLECT:
+            case Status.COMPLETED:
               return ListView.builder(
                   itemCount: value.moviesList.data!.movies!.length,
                   itemBuilder: (context, index) {
@@ -90,11 +90,9 @@ class _Home_screenState extends State<Home_screen> {
                       ),
                     );
                   });
-
-            case null:
-            // TODO: Handle this case.
+            default:
+              return Container();
           }
-          return Container();
         }),
       ),
     );
