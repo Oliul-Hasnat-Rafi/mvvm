@@ -3,19 +3,21 @@ import 'dart:io';
 import 'package:http/http.dart';
 import 'package:mvvm/data/Appexception.dart';
 import 'package:mvvm/data/Network/baseapiservice.dart';
-import 'package:http/http.dart' as Http;
+import 'package:http/http.dart' as http;
 
 class NetwrokAApiService implements Baseapiservice {
   @override
   Future getapidata(String url) async {
-    dynamic responsejson;
+    dynamic responseJson;
     try {
-      final _response = Http.get(Uri.parse(url)).timeout(Duration(seconds: 30));
-      responsejson = RetuenResponse(_response as Http.Response);
+      final response =
+          await http.get(Uri.parse(url)).timeout(const Duration(seconds: 30));
+      responseJson = returnResponse(response);
     } on SocketException {
-      throw FetchException('NO Internet');
+      throw FetchDataException('No Internet Connection');
     }
-    return responsejson;
+
+    return responseJson;
   }
 
   @override
@@ -25,23 +27,29 @@ class NetwrokAApiService implements Baseapiservice {
       Response response =
           await post(Uri.parse(url), body: data).timeout(Duration(seconds: 10));
 
-      responseJson = RetuenResponse(response);
+      responseJson = returnResponse(response);
     } on SocketException {
-      throw FetchException('No Internet Connection');
+      throw FetchDataException('No Internet Connection');
     }
 
     return responseJson;
   }
 
-  dynamic RetuenResponse(Http.Response response) {
+  dynamic returnResponse(http.Response response) {
     switch (response.statusCode) {
       case 200:
-        dynamic responsejson = jsonDecode(response.body);
-        return responsejson;
+        dynamic responseJson = jsonDecode(response.body);
+        return responseJson;
       case 400:
-        throw BadRequestexception(response.statusCode.toString());
+        throw BadRequestException(response.body.toString());
+      case 500:
+      case 404:
+        throw UnauthorisedException(response.body.toString());
       default:
-        throw FetchException("Bed Internat" + response.statusCode.toString());
+        throw FetchDataException(
+            'Error accured while communicating with server' +
+                'with status code' +
+                response.statusCode.toString());
     }
   }
 }

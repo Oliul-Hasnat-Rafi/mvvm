@@ -4,22 +4,24 @@ class AppException implements Exception {
   AppException([this._message, this._prefix]);
 
   String toString() {
-    return '$_prefix $_message';
+    return '$_prefix$_message';
   }
 }
 
-class FetchException extends AppException {
-  FetchException([String? message]) : super(message, 'Eorrr to comminucation');
+class FetchDataException extends AppException {
+  FetchDataException([String? message])
+      : super(message, 'Error During Communication');
 }
 
-class BadRequestexception extends AppException {
-  BadRequestexception([String? message]) : super(message, 'Invild Request');
+class BadRequestException extends AppException {
+  BadRequestException([String? message]) : super(message, 'Invalid request');
 }
 
-class unauthexception extends AppException {
-  unauthexception([String? message]) : super(message, 'unauthrice Request');
+class UnauthorisedException extends AppException {
+  UnauthorisedException([String? message])
+      : super(message, 'Unauthorised request');
 }
 
-class InvildinputException extends AppException {
-  InvildinputException([String? message]) : super(message, 'Invild input');
+class InvalidInputException extends AppException {
+  InvalidInputException([String? message]) : super(message, 'Invalid Inpit');
 }

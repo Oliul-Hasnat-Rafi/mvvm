@@ -11,7 +11,7 @@ class AuthRepository {
       dynamic responce = _apiservice.postapidata(AppUrl.loginEndPint, data);
       return responce;
     } catch (e) {
-      FetchException(e.toString());
+      FetchDataException(e.toString());
     }
   }
 
@@ -20,7 +20,7 @@ class AuthRepository {
       dynamic responce = _apiservice.postapidata(AppUrl.loginEndPint, data);
       return responce;
     } catch (e) {
-      FetchException(e.toString());
+      FetchDataException(e.toString());
     }
   }
 }

@@ -8,8 +8,8 @@ class HomeViewViewModel with ChangeNotifier {
 
   Api_request<movies_model> moviesList = Api_request.loading();
 
-  setMoviesList(Api_request<movies_model> response) {
-    moviesList = response;
+  setMoviesList(Api_request<movies_model> response) async {
+    moviesList = await response;
     notifyListeners();
   }
 
